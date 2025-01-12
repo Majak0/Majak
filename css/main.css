@@ -1,0 +1,280 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body.overflow {
+    overflow: hidden;
+}
+
+.burger {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.burger span {
+    width: 30px;
+    height: 3px;
+    background-color: #2a2a2a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -1.5px;
+    transition: all 0.3s ease;
+}
+
+.burger.clicked span {
+    transform: rotate(45deg);
+}
+
+.burger.clicked span:before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+.burger.clicked span:after {
+    opacity: 0;
+}
+
+.burger span:before,
+.burger span:after {
+    content: "";
+    width: 30px;
+    height: 3px;
+    background-color: #2a2a2a;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.burger span:before {
+    top: -10px;
+}
+
+.burger span:after {
+    top: 10px;
+}
+
+.burger:hover {
+    cursor: pointer;
+}
+
+nav {
+    background-color: #2a2a2a;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    height: 100%;
+    max-width: 515px;
+    width: 100%;
+    padding: 100px 40px 60px 40px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+nav.show {
+    transform: translateX(0);
+}
+
+nav ul.main {
+    list-style-type: none;
+}
+
+nav ul.main li {
+    margin-bottom: 20px;
+    transform: translateX(40px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+nav.show ul.main li {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+nav ul.main li a {
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    display: block;
+    letter-spacing: 5px;
+    font-weight: 600;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+nav ul.main li a:hover {
+    color: #b28df8;
+}
+
+nav .about {
+    margin-top: 40px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+nav.show .about {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+nav .about p {
+    color: #ffffff;
+    font-family: 'Spectral', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    line-height: 170%;
+}
+
+/* Section Social */
+nav .social {
+    margin-top: 40px;
+    position: relative;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center; /* Centre les icônes horizontalement */
+    gap: 20px; /* Espacement uniforme entre les icônes */
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.social a {
+    display: flex; /* Active flexbox dans le lien */
+    justify-content: center; /* Centre l'icône horizontalement */
+    align-items: center; /* Centre l'icône verticalement */
+    width: 50px; /* Taille du cercle */
+    height: 50px; /* Taille du cercle */
+    background-color: #fefefe; /* Couleur de fond */
+    border-radius: 50%; /* Cercle parfait */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Ombre légère */
+    text-decoration: none; /* Supprime le soulignement */
+    color: #333; /* Couleur de l'icône */
+    font-size: 1.5rem; /* Taille de l'icône */
+    transition: all 0.3s ease; /* Animation au survol */
+}
+
+.social a:hover {
+    background-color: #333; /* Change la couleur du fond */
+    color: #fff; /* Change la couleur de l'icône */
+    transform: scale(1.1); /* Agrandit légèrement */
+}
+
+/* Quand le menu est visible */
+nav.show .social {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .social {
+        gap: 15px;
+    }
+
+    .social a {
+        width: clamp(30px, 10vw, 50px);
+        height: clamp(30px, 10vw, 50px);
+        font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .social {
+        gap: 10px;
+    }
+
+    .social a {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+
+nav.show .social {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+nav .social:after {
+    content: "";
+    width: 230px;
+    height: 2px;
+    background-color: #b28df8;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+nav .social a:last-of-type {
+    margin-right: 0;
+}
+
+nav ul.sub {
+    list-style-type: none;
+    margin-top: 40px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+nav.show ul.sub {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+nav ul.sub li {
+    margin-bottom: 10px;
+}
+
+nav ul.sub li a {
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+nav ul.sub li a:hover {
+    color: #b28df8;
+}
+
+.overlay.show {
+    opacity: 0.8;
+    visibility: visible;
+}
+
+.burger.clicked span,
+.burger.clicked span:before,
+.burger.clicked span:after {
+    background-color: #fefefe;
+}
+
+#myVideo { 
+    position: absolute; 
+    right: 0; 
+    bottom: 0; 
+    min-width: 100%; 
+    min-height: 100%; 
+    width: auto; 
+    height: auto; 
+}
